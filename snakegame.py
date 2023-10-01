@@ -10,12 +10,26 @@ width, height = 540, 380
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Змейка")
 
+# Музыка
+pygame.mixer.music.load('gachimuchi.mp3')
+pygame.mixer.music.play(0)
+
 # Цвета
 black = pygame.Color(0, 0, 0)
 white = pygame.Color(255, 255, 255)
 red = pygame.Color(255, 0, 0)
 green = pygame.Color(0, 255, 0)
 blue = pygame.Color(0, 0, 255)
+
+# Изображения
+field = pygame.image.load('field.png')
+field = pygame.transform.scale(field, (640, 480))
+
+apple = pygame.image.load('apple.png')
+apple = pygame.transform.scale(apple, (10, 10))
+
+snake = pygame.image.load('snake.png')
+snake = pygame.transform.scale(snake, (10, 10))
 
 # Задержка обновления экрана
 fps = pygame.time.Clock()
@@ -81,16 +95,10 @@ while not game_over:
     food_spawn = True
 
     # Отрисовка элементов игры
-
-    field = pygame.image.load('field.png')
-    field = pygame.transform.scale(field, (640, 480))
     screen.blit(field, (0, 0))
 
-    apple = pygame.image.load('apple.png')
-    apple = pygame.transform.scale(apple, (10, 10))
-
     for pos in snake_body:
-        pygame.draw.rect(screen, green, pygame.Rect(pos[0], pos[1], 10, 10))
+        screen.blit(snake, (pos[0], pos[1], 10, 10))
     screen.blit(apple, (food_pos[0], food_pos[1]))
 
 
@@ -110,7 +118,7 @@ while not game_over:
     pygame.display.update()
 
     # Задержка обновления экрана
-    fps.tick(20)
+    fps.tick(15)
 
 # Выход из игры
 pygame.quit()
