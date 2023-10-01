@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Змейка")
 
 # Музыка
-music = pygame.mixer.Sound('music.mp3')
+music = pygame.mixer.Sound('music/music.mp3')
 music.play(-1)
 music.set_volume(0.1)
 
@@ -24,13 +24,13 @@ green = pygame.Color(0, 255, 0)
 blue = pygame.Color(0, 0, 255)
 
 # Изображения
-field = pygame.image.load('field.png')
+field = pygame.image.load('img/field.png')
 field = pygame.transform.scale(field, (740, 580))
 
-apple = pygame.image.load('apple.png')
+apple = pygame.image.load('img/apple.png')
 apple = pygame.transform.scale(apple, (20, 20))
 
-snake = pygame.image.load('snake.png')
+snake = pygame.image.load('img/snake.png')
 snake = pygame.transform.scale(snake, (20, 20))
 
 # Задержка обновления экрана
@@ -91,7 +91,7 @@ while not game_over:
         snake_body.pop()
 
     if not food_spawn:
-        eat = pygame.mixer.Sound('eat.mp3')
+        eat = pygame.mixer.Sound('music/eat.mp3')
         eat.play()
         eat.set_volume(0.3)
         food_pos = [random.randrange(1, width // 20) * 20, random.randrange(1, height // 20) * 20]
