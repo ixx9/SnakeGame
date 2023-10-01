@@ -82,7 +82,7 @@ while not game_over:
 
     # Отрисовка элементов игры
 
-    field = pygame.image.load('field.png')
+    field = pygame.image.load('new_field.png')
     field = pygame.transform.scale(field, (640, 480))
     screen.blit(field, (0, 0))
 
